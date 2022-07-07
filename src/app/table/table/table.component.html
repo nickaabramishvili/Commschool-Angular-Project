@@ -1,0 +1,103 @@
+<div class="h1">Add Customer</div>
+<form
+  class="example-form"
+  [formGroup]="addCustomerForm"
+  (ngSubmit)="onAddUser()"
+>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>id</mat-label>
+    <input
+      matInput
+      placeholder="Ex. Pizza"
+      formControlName="id"
+      type="number"
+    />
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input
+      matInput
+      placeholder="Ex. Pizza"
+      formControlName="firstName"
+      type="text"
+    />
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input
+      matInput
+      placeholder="Ex. Pizza"
+      formControlName="lastName"
+      type="text"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>workingYears</mat-label>
+    <input
+      matInput
+      placeholder="Ex. Pizza"
+      formControlName="workingYears"
+      type="number"
+    />
+  </mat-form-field>
+  <button mat-raised-button color="primary">Add Customer</button>
+</form>
+
+<div class="h1">Colored TExt</div>
+<mat-form-field appearance="standard" class="mx-5">
+  <mat-label>Filter</mat-label>
+  <input
+    matInput
+    placeholder="Search columns"
+    #input
+    [(ngModel)]="ColoredText"
+  />
+</mat-form-field>
+<p appColorDirective="'red'">{{ ColoredText }}</p>
+<table
+  mat-table
+  [dataSource]="dataSource"
+  class="mat-elevation-z8"
+  matSort
+  #table
+>
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <!-- firstName Column -->
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef>firstName</th>
+    <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+  </ng-container>
+
+  <!-- lastName Column -->
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef>lastName</th>
+    <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+  </ng-container>
+
+  <!-- workingYears Column -->
+  <ng-container matColumnDef="workingYears">
+    <th mat-header-cell *matHeaderCellDef>workingYears</th>
+    <td mat-cell *matCellDef="let element">{{ element.workingYears }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef>delete</th>
+    <td mat-cell *matCellDef="let i = index">
+      <button mat-raised-button color="warn" (click)="onDeleteRow(i)">
+        Warn
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

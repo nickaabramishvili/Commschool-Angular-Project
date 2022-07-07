@@ -6,10 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  infodiv = false;
+  infodiv: boolean = false;
   onInfoDivClick() {
-    this.infodiv = true;
-    this.infodiv != this.infodiv;
+    this.infodiv = !this.infodiv;
   }
   title = 'Commschool-Angular-Project';
 }
