@@ -48,8 +48,6 @@ export class TableComponent {
   onDeleteRow(i: number) {
     this.dataSource.splice(i, 1);
     this.dataSource = [...this.dataSource];
-
-    console.log(this.dataSource);
   }
 
   onAddUser() {
@@ -80,11 +78,8 @@ export class TableComponent {
           this.dataSource.push(filteredEl);
         }
       }
-
-      console.log(nameAndLastName);
     } else if (this.ColoredText == '') {
       this.dataSource = [...this.wholeArr];
-      console.log(this.wholeArr);
     }
   }
 }
