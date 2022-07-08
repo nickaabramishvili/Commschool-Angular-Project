@@ -8,7 +8,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   infodiv: boolean = false;
   onInfoDivClick() {
-    this.infodiv = !this.infodiv;
+    setTimeout(() => {
+      this.infodiv = !this.infodiv;
+    }, 1000);
   }
   title = 'Commschool-Angular-Project';
 }

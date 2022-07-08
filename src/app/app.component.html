@@ -4,9 +4,9 @@
   <h5 class="h5">Hello It IS</h5>
   <div class="">ANGULAR PROJECT</div>
   <button class="btn btn-primary mt-5" (click)="onInfoDivClick()">
-    Click ME
+    <span *ngIf="!infodiv">Load Data</span>
+    <span *ngIf="infodiv">Hide Data</span>
   </button>
-  <div class="h5 pt-5" *ngIf="infodiv">Button Was Clicked</div>
 </div>
-<app-table> </app-table>
+<app-table *ngIf="infodiv"> </app-table>
 <router-outlet></router-outlet>
