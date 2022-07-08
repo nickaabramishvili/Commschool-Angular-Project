@@ -70,8 +70,8 @@ export class TableComponent {
     if (nameAndLastName.length < 3 && nameAndLastName[0] != '') {
       for (let i = 0; i < this.dataSource.length; i++) {
         if (
-          nameAndLastName[0] === this.dataSource[i].firstName &&
-          nameAndLastName[1] === this.dataSource[i].lastName
+          this.dataSource[i].firstName.includes(nameAndLastName[0]) &&
+          this.dataSource[i].lastName.includes(nameAndLastName[1])
         ) {
           filteredEl = this.dataSource[i];
           this.dataSource = [];
