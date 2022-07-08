@@ -44,8 +44,8 @@
   <button mat-raised-button color="primary">Add Customer</button>
 </form>
 
-<div class="h1">Colored TExt</div>
-<mat-form-field appearance="standard" class="mx-5">
+<div class="h1">Filter Table & Custom Directive color & custom Pipe</div>
+<mat-form-field appearance="standard" class="mx-5 w-75">
   <mat-label>Filter</mat-label>
   <input
     matInput
@@ -54,7 +54,7 @@
     [(ngModel)]="ColoredText"
   />
 </mat-form-field>
-<p appColorDirective="'red'">{{ ColoredText }}</p>
+<p appCustomStyle>{{ ColoredText | customTransform }}</p>
 <table
   mat-table
   [dataSource]="dataSource"

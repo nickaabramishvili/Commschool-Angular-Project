@@ -1,15 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ColorDirectiveDirective } from './color-directive.directive';
-
-
+import { CustomStyleDirective } from './custom-style.directive';
 
 @NgModule({
-  declarations: [
-    ColorDirectiveDirective
-  ],
-  imports: [
-    CommonModule
-  ]
+  declarations: [CustomStyleDirective],
+  imports: [CommonModule],
+  exports: [CustomStyleDirective],
 })
-export class DirectivesModule { }
+export class DirectivesModule {}
