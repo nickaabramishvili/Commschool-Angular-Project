@@ -52,6 +52,7 @@
     placeholder="Search columns"
     #input
     [(ngModel)]="ColoredText"
+    (keyup)="onFilterTable()"
   />
 </mat-form-field>
 <p appCustomStyle>{{ ColoredText | customTransform }}</p>

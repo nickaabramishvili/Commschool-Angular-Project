@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 export interface PeriodicElement {
@@ -28,7 +28,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class TableComponent {
   dataSource = ELEMENT_DATA;
-
+  public ColoredText = '';
+  wholeArr = [...this.dataSource];
   displayedColumns: string[] = [
     'id',
     'firstName',
@@ -64,8 +65,26 @@ export class TableComponent {
     }
   }
 
-  // applyFilter(event: any) {
-  //   console.log(event);
-  // }
-  public ColoredText = '';
+  onFilterTable() {
+    let nameAndLastName = this.ColoredText.split(' ');
+    let filteredEl;
+
+    if (nameAndLastName.length < 3 && nameAndLastName[0] != '') {
+      for (let i = 0; i < this.dataSource.length; i++) {
+        if (
+          nameAndLastName[0] === this.dataSource[i].firstName &&
+          nameAndLastName[1] === this.dataSource[i].lastName
+        ) {
+          filteredEl = this.dataSource[i];
+          this.dataSource = [];
+          this.dataSource.push(filteredEl);
+        }
+      }
+
+      console.log(nameAndLastName);
+    } else if (this.ColoredText == '') {
+      this.dataSource = [...this.wholeArr];
+      console.log(this.wholeArr);
+    }
+  }
 }
