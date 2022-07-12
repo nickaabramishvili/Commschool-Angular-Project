@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TableComponent } from './table/table.component';
+import { ActiveCustomersComponent } from './active-customers/active-customers.component';
 import { MaterialModule } from '../assets/libraries/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirectivesModule } from '../directives/directives.module';
 import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
-  declarations: [TableComponent],
+  declarations: [ActiveCustomersComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -16,6 +16,6 @@ import { PipesModule } from '../pipes/pipes.module';
     DirectivesModule,
     PipesModule,
   ],
-  exports: [TableComponent],
+  exports: [ActiveCustomersComponent],
 })
-export class TableModule {}
+export class CustomersModule {}

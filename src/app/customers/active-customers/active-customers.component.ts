@@ -1,33 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
-export interface PeriodicElement {
-  id: number;
-  firstName: string;
-  lastName: string;
-  workingYears: number;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { id: 1, firstName: 'eli', lastName: 'metreveli', workingYears: 1 },
-  { id: 2, firstName: 'gela', lastName: 'urushadze', workingYears: 2 },
-  { id: 3, firstName: 'bela', lastName: 'zoidze', workingYears: 3 },
-  { id: 4, firstName: 'lela', lastName: 'abesadze', workingYears: 2 },
-  { id: 5, firstName: 'maxo', lastName: 'barabqadze', workingYears: 3 },
-  { id: 6, firstName: 'zviadi', lastName: 'gnolidze', workingYears: 5 },
-  { id: 7, firstName: 'gio', lastName: 'vardia', workingYears: 7 },
-  { id: 8, firstName: 'keta', lastName: 'orashia', workingYears: 14 },
-  { id: 9, firstName: 'iosebi', lastName: 'beladze', workingYears: 3 },
-  { id: 10, firstName: 'nona', lastName: 'koridze', workingYears: 11 },
-];
-
+import { CustomersDataService } from '../../services/customers-data.service';
+import { PeriodicElement } from '../models/customer.model';
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
+  selector: 'app-active-customers',
+  templateUrl: './active-customers.component.html',
+  styleUrls: ['./active-customers.component.scss'],
+  providers: [CustomersDataService],
 })
-export class TableComponent {
-  dataSource = ELEMENT_DATA;
+export class ActiveCustomersComponent {
+  constructor(private CustomersDataService: CustomersDataService) {
+    console.log(this.CustomersDataService.getData());
+  }
+  ELEMENT_DATA: PeriodicElement[] = this.CustomersDataService.getData();
+  dataSource = this.ELEMENT_DATA;
   public ColoredText = '';
   wholeArr = [...this.dataSource];
   displayedColumns: string[] = [

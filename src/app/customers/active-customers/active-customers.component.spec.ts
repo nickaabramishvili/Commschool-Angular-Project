@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableComponent } from './table.component';
+import { ActiveCustomersComponent } from './active-customers.component';
 
-describe('TableComponent', () => {
-  let component: TableComponent;
-  let fixture: ComponentFixture<TableComponent>;
+describe('ActiveCustomersComponent', () => {
+  let component: ActiveCustomersComponent;
+  let fixture: ComponentFixture<ActiveCustomersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableComponent ]
-    })
-    .compileComponents();
+      declarations: [ActiveCustomersComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TableComponent);
+    fixture = TestBed.createComponent(ActiveCustomersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
