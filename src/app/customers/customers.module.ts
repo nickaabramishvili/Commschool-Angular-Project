@@ -5,9 +5,15 @@ import { MaterialModule } from '../assets/libraries/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirectivesModule } from '../directives/directives.module';
 import { PipesModule } from '../pipes/pipes.module';
+import { CustomersWrapperComponent } from './customers-wrapper/customers-wrapper.component';
+import { DeletedCustomersComponent } from './deleted-customers/deleted-customers.component';
 
 @NgModule({
-  declarations: [ActiveCustomersComponent],
+  declarations: [
+    ActiveCustomersComponent,
+    CustomersWrapperComponent,
+    DeletedCustomersComponent,
+  ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -16,6 +22,14 @@ import { PipesModule } from '../pipes/pipes.module';
     DirectivesModule,
     PipesModule,
   ],
-  exports: [ActiveCustomersComponent],
+  exports: [ActiveCustomersComponent, CustomersWrapperComponent],
+  providers: [
+    {
+      provide: 'VERSION-NUMBER',
+      useFactory: function func() {
+        return Math.random();
+      },
+    },
+  ],
 })
 export class CustomersModule {}

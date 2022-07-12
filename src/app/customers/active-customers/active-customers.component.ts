@@ -1,28 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomersDataService } from '../../services/customers-data.service';
-import { PeriodicElement } from '../models/customer.model';
+
 @Component({
   selector: 'app-active-customers',
   templateUrl: './active-customers.component.html',
   styleUrls: ['./active-customers.component.scss'],
-  providers: [CustomersDataService],
 })
 export class ActiveCustomersComponent {
-  constructor(private CustomersDataService: CustomersDataService) {
-    console.log(this.CustomersDataService.getData());
-  }
-  ELEMENT_DATA: PeriodicElement[] = this.CustomersDataService.getData();
-  dataSource = this.ELEMENT_DATA;
+  constructor(private CustomersDataService: CustomersDataService) {}
+  dataSource = this.CustomersDataService.customersData;
   public ColoredText = '';
   wholeArr = [...this.dataSource];
-  displayedColumns: string[] = [
-    'id',
-    'firstName',
-    'lastName',
-    'workingYears',
-    'delete',
-  ];
+  deletedCustomersArray = this.CustomersDataService.deletedCustomersArray;
+  displayedColumns = this.CustomersDataService.displayedColumns;
 
   addCustomerForm = new FormGroup({
     id: new FormControl('', [Validators.required]),
@@ -32,8 +23,9 @@ export class ActiveCustomersComponent {
   });
 
   onDeleteRow(i: number) {
-    this.dataSource.splice(i, 1);
+    this.deletedCustomersArray.push(...this.dataSource.splice(i, 1));
     this.dataSource = [...this.dataSource];
+    console.log(this.deletedCustomersArray);
   }
 
   onAddUser() {
