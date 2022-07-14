@@ -6,8 +6,17 @@ import { CustomersDataService } from '../../services/customers-data.service';
   styleUrls: ['./deleted-customers.component.scss'],
 })
 export class DeletedCustomersComponent implements OnInit {
-  constructor(private CustomersDataService: CustomersDataService) {}
-  dataSource = this.CustomersDataService.deletedCustomersArray;
+  constructor(public CustomersDataService: CustomersDataService) {}
+
   displayedColumns = this.CustomersDataService.displayedColumns;
+  onDeleteRow(i: number) {
+    this.CustomersDataService.customersData = [
+      ...this.CustomersDataService.deletedCustomersArray.splice(i, 1),
+      ...this.CustomersDataService.customersData,
+    ];
+    this.CustomersDataService.deletedCustomersArray = [
+      ...this.CustomersDataService.deletedCustomersArray,
+    ];
+  }
   ngOnInit(): void {}
 }

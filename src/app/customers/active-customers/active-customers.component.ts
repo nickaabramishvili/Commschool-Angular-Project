@@ -8,11 +8,11 @@ import { CustomersDataService } from '../../services/customers-data.service';
   styleUrls: ['./active-customers.component.scss'],
 })
 export class ActiveCustomersComponent {
-  constructor(private CustomersDataService: CustomersDataService) {}
-  dataSource = this.CustomersDataService.customersData;
+  constructor(public CustomersDataService: CustomersDataService) {}
+
   public ColoredText = '';
-  wholeArr = [...this.dataSource];
-  deletedCustomersArray = this.CustomersDataService.deletedCustomersArray;
+  wholeArr = [...this.CustomersDataService.customersData];
+
   displayedColumns = this.CustomersDataService.displayedColumns;
 
   addCustomerForm = new FormGroup({
@@ -23,9 +23,14 @@ export class ActiveCustomersComponent {
   });
 
   onDeleteRow(i: number) {
-    this.deletedCustomersArray.push(...this.dataSource.splice(i, 1));
-    this.dataSource = [...this.dataSource];
-    console.log(this.deletedCustomersArray);
+    this.CustomersDataService.deletedCustomersArray = [
+      ...this.CustomersDataService.deletedCustomersArray,
+      ...this.CustomersDataService.customersData.splice(i, 1),
+    ];
+    this.CustomersDataService.customersData = [
+      ...this.CustomersDataService.customersData,
+    ];
+    console.log(this.CustomersDataService.deletedCustomersArray);
   }
 
   onAddUser() {
@@ -36,8 +41,10 @@ export class ActiveCustomersComponent {
       workingYears: this.addCustomerForm.value.workingYears,
     };
     if (this.addCustomerForm.valid) {
-      this.dataSource.push(newUser);
-      this.dataSource = [...this.dataSource];
+      this.CustomersDataService.customersData.push(newUser);
+      this.CustomersDataService.customersData = [
+        ...this.CustomersDataService.customersData,
+      ];
     }
   }
 
@@ -46,18 +53,22 @@ export class ActiveCustomersComponent {
     let filteredEl;
 
     if (nameAndLastName.length < 3 && nameAndLastName[0] != '') {
-      for (let i = 0; i < this.dataSource.length; i++) {
+      for (let i = 0; i < this.CustomersDataService.customersData.length; i++) {
         if (
-          this.dataSource[i].firstName.includes(nameAndLastName[0]) &&
-          this.dataSource[i].lastName.includes(nameAndLastName[1])
+          this.CustomersDataService.customersData[i].firstName.includes(
+            nameAndLastName[0]
+          ) &&
+          this.CustomersDataService.customersData[i].lastName.includes(
+            nameAndLastName[1]
+          )
         ) {
-          filteredEl = this.dataSource[i];
-          this.dataSource = [];
-          this.dataSource.push(filteredEl);
+          filteredEl = this.CustomersDataService.customersData[i];
+          this.CustomersDataService.customersData = [];
+          this.CustomersDataService.customersData.push(filteredEl);
         }
       }
     } else if (this.ColoredText == '') {
-      this.dataSource = [...this.wholeArr];
+      this.CustomersDataService.customersData = [...this.wholeArr];
     }
   }
 }
