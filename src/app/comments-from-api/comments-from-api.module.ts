@@ -4,16 +4,12 @@ import { CommentsForServComponent } from './comments-for-serv/comments-for-serv.
 import { CommentsForUIComponent } from './comments-for-ui/comments-for-ui.component';
 import { CommentsWrapperComponent } from './comments-wrapper/comments-wrapper.component';
 
-
-
 @NgModule({
   declarations: [
     CommentsForServComponent,
     CommentsForUIComponent,
-    CommentsWrapperComponent
+    CommentsWrapperComponent,
   ],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule],
 })
-export class CommentsFromApiModule { }
+export class CommentsFromApiModule {}
