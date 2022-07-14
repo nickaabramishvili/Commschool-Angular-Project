@@ -1,11 +1,17 @@
 <div class="w-100">
-  <!-- <button class="btn btn-primary mt-5" (click)="onInfoDivClick()">
+  <button class="btn btn-primary mt-5" (click)="onInfoDivClick()">
     <span *ngIf="!infodiv">Load Data</span>
     <span *ngIf="infodiv">Hide Data</span>
-  </button> -->
+  </button>
+  <div class="w-100 d-flex mt-2">
+    <div
+      class="animation-div"
+      [@componentLoading]="animationTriggered ? 'loaded' : 'notLoaded'"
+    ></div>
+  </div>
 
-  <!-- <div *ngIf="infodiv"> -->
-  <app-active-customers></app-active-customers>
-  <p>App Version: {{ versionNumber }}</p>
-  <!-- </div> -->
+  <div *ngIf="infodiv">
+    <app-active-customers></app-active-customers>
+    <p>App Version: {{ versionNumber }}</p>
+  </div>
 </div>

@@ -4,7 +4,7 @@
       <div class="row align-items-center position-relative">
         <div class="col-3">
           <div class="site-logo">
-            <a href="index.html" class="font-weight-bold"
+            <a routerLink="" class="font-weight-bold"
               >Commschool Angular Project</a
             >
           </div>
@@ -12,7 +12,7 @@
         <div class="col-9 text-right">
           <span class="d-inline-block d-lg-none"
             ><a
-              href="#"
+              routerLink=""
               class="text-primary site-menu-toggle js-menu-toggle py-5"
               ><span class="icon-menu h3 text-white"></span></a
           ></span>
@@ -21,25 +21,21 @@
             role="navigation"
           >
             <ul class="site-menu main-menu js-clone-nav ml-auto">
-              <li class="active"><a href="#" class="nav-link">Table</a></li>
-              <li><a href="#" class="nav-link">Posts</a></li>
-              <li><a href="#" class="nav-link">Other</a></li>
+              <li
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+              >
+                <a routerLink="" class="nav-link">Table</a>
+              </li>
+              <li routerLinkActive="active">
+                <a routerLink="posts" class="nav-link">Posts</a>
+              </li>
             </ul>
           </nav>
         </div>
       </div>
     </div>
   </header>
-  <button class="btn btn-primary mt-5" (click)="onInfoDivClick()">
-    <span *ngIf="!infodiv">Load Data</span>
-    <span *ngIf="infodiv">Hide Data</span>
-  </button>
-  <div class="w-100 d-flex mt-2">
-    <div
-      class="animation-div"
-      [@componentLoading]="animationTriggered ? 'loaded' : 'notLoaded'"
-    ></div>
-  </div>
 </div>
-<app-customers-wrapper *ngIf="infodiv"> </app-customers-wrapper>
+
 <router-outlet></router-outlet>
