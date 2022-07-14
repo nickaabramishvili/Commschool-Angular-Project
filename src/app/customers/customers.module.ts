@@ -7,7 +7,7 @@ import { DirectivesModule } from '../directives/directives.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { CustomersWrapperComponent } from './customers-wrapper/customers-wrapper.component';
 import { DeletedCustomersComponent } from './deleted-customers/deleted-customers.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     ActiveCustomersComponent,
@@ -21,6 +21,7 @@ import { DeletedCustomersComponent } from './deleted-customers/deleted-customers
     ReactiveFormsModule,
     DirectivesModule,
     PipesModule,
+    BrowserAnimationsModule,
   ],
   exports: [ActiveCustomersComponent, CustomersWrapperComponent],
   providers: [

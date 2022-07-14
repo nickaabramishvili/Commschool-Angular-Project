@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import {
   state,
   style,
@@ -5,8 +6,6 @@ import {
   transition,
   animate,
 } from '@angular/animations';
-import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -43,6 +42,5 @@ export class AppComponent {
       this.infodiv = !this.infodiv;
     }, 1000);
   }
-
   title = 'Commschool-Angular-Project';
 }
