@@ -9,7 +9,16 @@ import { Observable } from 'rxjs';
 })
 export class GetCommentsService {
   constructor(private httpClient: HttpClient) {}
+  // wamogeba 100 postis
   getPosts(): Observable<Comments[]> {
     return this.httpClient.get<Comments[]>(`${environment.api}posts`);
+  }
+  // aweva postis 101 cali
+  postPosts(): Observable<Comments[]> {
+    return this.httpClient.post<Comments[]>(`${environment.api}posts`, {});
+  }
+  // washla 1 postis
+  deletePosts(id: number) {
+    return this.httpClient.delete(`${environment.api}posts/${id}`);
   }
 }

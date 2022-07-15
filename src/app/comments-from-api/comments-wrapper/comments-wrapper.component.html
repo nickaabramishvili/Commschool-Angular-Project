@@ -1,1 +1,22 @@
-<button class="btn bt-primary">Load Comments</button>
+<div class="d-flex w-100 justify-content-around">
+  <button class="btn btn-primary mt-5" (click)="onLoadComments()">
+    Load(get) Comments
+  </button>
+  <button class="btn btn-primary mt-5" (click)="onPostComments()">
+    plase(put) Comments
+  </button>
+  <button class="btn btn-primary mt-5" (click)="onDeleteComments(5)">
+    delete(delete) Comments
+  </button>
+</div>
+
+<ul class="list-group px-2">
+  <li
+    class="list-group-item list-group-item-action my-2 border rounded"
+    *ngFor="let comment of commentsList"
+  >
+    <h3>{{ comment.title }}</h3>
+    <p>{{ comment.body }}</p>
+  </li>
+</ul>
+.

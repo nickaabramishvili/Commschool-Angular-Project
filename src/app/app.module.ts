@@ -5,7 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomersModule } from './customers/customers.module';
-import { HttpClientModule } from '@angular/common/http';
+import { CommentsFromApiModule } from './comments-from-api/comments-from-api.module';
+import { AuthInterceptor } from './core/auth.interceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,8 +17,15 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     CustomersModule,
     HttpClientModule,
+    CommentsFromApiModule,
   ],
-
   bootstrap: [AppComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
 })
 export class AppModule {}
