@@ -15,7 +15,12 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    console.log(request + " ''sdfsfsd");
-    return next.handle(request);
+    console.log(request);
+    return next.handle(this.attachLanguageHeader(request));
+  }
+  attachLanguageHeader(request: HttpRequest<unknown>) {
+    return request.clone({
+      setHeaders: { token: 'RAndom Text' },
+    });
   }
 }

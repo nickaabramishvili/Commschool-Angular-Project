@@ -16,10 +16,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     CustomersModule,
-    HttpClientModule,
     CommentsFromApiModule,
+    HttpClientModule,
   ],
-  bootstrap: [AppComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -27,5 +26,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
       multi: true,
     },
   ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

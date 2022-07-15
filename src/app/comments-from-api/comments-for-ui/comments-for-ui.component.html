@@ -1,1 +1,26 @@
-<p>comments-for-ui works!</p>
+<div class="d-flex w-100 justify-content-around">
+  <button class="btn btn-primary mt-5" (click)="onLoadComments()">
+    Load(get) Comments
+  </button>
+  <button class="btn btn-primary mt-5" (click)="onPostComments()">
+    plase(post) Comments
+  </button>
+  <div class="d-flex flex-column mt-5">
+    <button class="btn btn-primary" (click)="onDeleteComments(5)">
+      delete(delete) Comments
+    </button>
+    <span class="h5" *ngIf="showTxtAfterDelete">
+      Comment Have Deleted Succesfully</span
+    >
+  </div>
+</div>
+
+<ul class="list-group px-2">
+  <li
+    class="list-group-item list-group-item-action my-2 border rounded"
+    *ngFor="let comment of commentsList"
+  >
+    <h3>{{ comment.title }}</h3>
+    <p>{{ comment.body }}</p>
+  </li>
+</ul>
