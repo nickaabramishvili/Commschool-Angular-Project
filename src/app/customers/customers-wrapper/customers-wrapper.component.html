@@ -11,6 +11,64 @@
   </div>
 
   <div *ngIf="infodiv">
+    <div class="h3">Add Customer</div>
+    <form
+      class="example-form"
+      [formGroup]="addCustomerForm"
+      (ngSubmit)="onAddUser()"
+    >
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>id</mat-label>
+        <input
+          matInput
+          placeholder="Ex. Pizza"
+          formControlName="id"
+          type="number"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input
+          matInput
+          placeholder="Ex. Pizza"
+          formControlName="firstName"
+          type="text"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input
+          matInput
+          placeholder="Ex. Pizza"
+          formControlName="lastName"
+          type="text"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>workingYears</mat-label>
+        <input
+          matInput
+          placeholder="Ex. Pizza"
+          formControlName="workingYears"
+          type="number"
+        />
+      </mat-form-field>
+      <button mat-raised-button color="primary">Add Customer</button>
+    </form>
+
+    <div class="h3">Filter Table & Custom Directive color & custom Pipe</div>
+    <mat-form-field appearance="standard" class="mx-5 w-75">
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        placeholder="Search columns"
+        #input
+        [(ngModel)]="ColoredText"
+        (keyup)="onFilterTable()"
+      />
+    </mat-form-field>
+    <p appCustomStyle>{{ ColoredText | customTransform }}</p>
     <app-active-customers></app-active-customers>
     <p>App Version: {{ versionNumber }}</p>
   </div>
