@@ -1,6 +1,7 @@
 export interface PeriodicElement {
-  id: number;
   firstName: string;
   lastName: string;
-  workingYears: number;
+  email: string;
+  sex: string;
+  birthday: number | any;
 }

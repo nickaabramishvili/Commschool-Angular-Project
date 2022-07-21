@@ -17,47 +17,81 @@
       [formGroup]="addCustomerForm"
       (ngSubmit)="onAddUser()"
     >
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>id</mat-label>
-        <input
-          matInput
-          placeholder="Ex. Pizza"
-          formControlName="id"
-          type="number"
-        />
-      </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>First Name</mat-label>
-        <input
-          matInput
-          placeholder="Ex. Pizza"
-          formControlName="firstName"
-          type="text"
-        />
-      </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Last Name</mat-label>
-        <input
-          matInput
-          placeholder="Ex. Pizza"
-          formControlName="lastName"
-          type="text"
-        />
-      </mat-form-field>
+      <div class="d-flex align-items-center justify-content-around">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            placeholder="Ex. Pizza"
+            formControlName="firstName"
+            type="text"
+          />
+          <mat-error
+            *ngIf="
+              isSubmited &&
+              addCustomerForm.get('firstName')?.hasError('required')
+            "
+            >Write First Name</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            placeholder="Ex. Pizza"
+            formControlName="lastName"
+            type="text"
+          />
+        </mat-form-field>
+      </div>
+      <div class="d-flex align-items-center justify-content-around">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input
+            matInput
+            placeholder="Ex. Pizza"
+            formControlName="email"
+            type="text"
+          />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>birthday</mat-label>
+          <input
+            matInput
+            placeholder="Ex. Pizza"
+            formControlName="birthday"
+            type="text"
+          />
+        </mat-form-field>
+        <!-- <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>sex</mat-label>
+          <input
+            matInput
+            placeholder="Ex. Pizza"
+            formControlName="sex"
+            type="text"
+          />
+        </mat-form-field> -->
+      </div>
+      <div class="d-flex align-items-center justify-content-around">
+        <mat-radio-group aria-label="Select an option">
+          <h4><mat-label class="font-size-lg">sex</mat-label></h4>
+          <div class="d-flex justify-content-around">
+            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button value="male">Male</mat-radio-button>
+          </div>
+        </mat-radio-group>
+        <section class="example-section">
+          <mat-checkbox class="example-margin">Agree</mat-checkbox>
+        </section>
+      </div>
 
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>workingYears</mat-label>
-        <input
-          matInput
-          placeholder="Ex. Pizza"
-          formControlName="workingYears"
-          type="number"
-        />
-      </mat-form-field>
       <button mat-raised-button color="primary">Add Customer</button>
     </form>
 
-    <div class="h3">Filter Table & Custom Directive color & custom Pipe</div>
+    <div class="h3 pt-5">
+      Filter Table & Custom Directive color & custom Pipe
+    </div>
     <mat-form-field appearance="standard" class="mx-5 w-75">
       <mat-label>Filter</mat-label>
       <input
