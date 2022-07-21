@@ -54,27 +54,19 @@
             type="text"
           />
         </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>birthday</mat-label>
-          <input
-            matInput
-            placeholder="Ex. Pizza"
-            formControlName="birthday"
-            type="text"
-          />
+        <mat-form-field appearance="fill">
+          <mat-label>Custom calendar header</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="birthday" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <!-- <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>sex</mat-label>
-          <input
-            matInput
-            placeholder="Ex. Pizza"
-            formControlName="sex"
-            type="text"
-          />
-        </mat-form-field> -->
       </div>
       <div class="d-flex align-items-center justify-content-around">
-        <mat-radio-group aria-label="Select an option">
+        <mat-radio-group aria-label="Select an option" formControlName="sex">
           <h4><mat-label class="font-size-lg">sex</mat-label></h4>
           <div class="d-flex justify-content-around">
             <mat-radio-button value="female">Female</mat-radio-button>

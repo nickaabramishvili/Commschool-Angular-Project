@@ -70,7 +70,8 @@ export class CustomersWrapperComponent implements OnInit {
       lastName: this.addCustomerForm.value.lastName,
       email: this.addCustomerForm.value.email,
       sex: this.addCustomerForm.value.sex,
-      birthday: this.addCustomerForm.value.birthday,
+      birthday: this.addCustomerForm.value.birthday | date,
+      // rogor gavataro birthday data date pipe shi
     };
     if (this.addCustomerForm.valid) {
       this.CustomersDataService.customersData.push(newUser);
