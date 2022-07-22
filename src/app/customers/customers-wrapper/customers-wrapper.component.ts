@@ -9,6 +9,7 @@ import {
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomersDataService } from '../../services/customers-data.service';
 import { customerPasswordStrength } from '../validators/customer-password-validator';
+import { checkCustomerAge } from '../validators/customer-age-validator';
 @Component({
   selector: 'app-customers-wrapper',
   templateUrl: './customers-wrapper.component.html',
@@ -51,10 +52,13 @@ export class CustomersWrapperComponent implements OnInit {
   ) {
     this.addCustomerForm = new FormGroup({
       firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
       email: new FormControl('', [Validators.required, Validators.email]),
       sex: new FormControl('', [Validators.required]),
-      birthday: new FormControl('', [Validators.required]),
+      birthday: new FormControl('', [Validators.required, checkCustomerAge()]),
       agreement: new FormControl('', [Validators.required]),
       password: new FormControl('', [
         Validators.required,
@@ -71,31 +75,41 @@ export class CustomersWrapperComponent implements OnInit {
   }
 
   onAddUser() {
+    // anu add customer gilakze dacheris shemdeg isSubmited vxdi trues radgan sheecada dasubmitebas,
+    // mere agreement tu aris monishnuli da mere formas vamowmeb tu validuria
     this.isSubmited = true;
     if (!this.addCustomerForm.get('agreement')?.value) {
       return;
     }
-    // vamowmeb tu carielia anu mainc falsea da tu falsea xo isedac falsea da returnis mere if is shignit raxanaa kods agar gaaagrdzelebs
-    // da tu trua mashin agaagrdzelebs da moxdeba yvelaperi chveulebrivad
-    let newUser = {
-      firstName: this.addCustomerForm.value.firstName,
-      lastName: this.addCustomerForm.value.lastName,
-      email: this.addCustomerForm.value.email,
-      sex: this.addCustomerForm.value.sex,
-      birthday: this.addCustomerForm.value.birthday,
-      password: this.addCustomerForm.value.password,
-    };
     if (this.addCustomerForm.valid) {
+      // vamowmeb tu carielia anu mainc falsea da tu falsea xo isedac falsea da returnis mere if is shignit raxanaa kods agar gaaagrdzelebs
+      // da tu trua mashin agaagrdzelebs da moxdeba yvelaperi chveulebrivad
+      let newUser = {
+        firstName: this.addCustomerForm.value.firstName,
+        lastName: this.addCustomerForm.value.lastName,
+        email: this.addCustomerForm.value.email,
+        sex: this.addCustomerForm.value.sex,
+        birthday: this.addCustomerForm.value.birthday,
+        password: this.addCustomerForm.value.password,
+      };
+
       this.CustomersDataService.customersData.push(newUser);
       this.CustomersDataService.customersData = [
         ...this.CustomersDataService.customersData,
       ];
+
+      // vwmindav formas da is submi9tteds vareseteb r oerro mesigebi tyuilad agar gamoitanos,da fromis fieldebs errorebs vashoreb
+
+      this.isSubmited = false;
+
+      this.addCustomerForm.reset();
+      // this.addCustomerForm.get('password')?.setErrors(null);
+
+      // Object.keys(this.addCustomerForm.controls).forEach((key) => {
+      //   this.addCustomerForm.controls[key].setErrors(null);
+      // });
+      // vwmindav formas
     }
-    // vwmindav formas da is submi9tteds vareseteb r oerro mesigebi tyuilad agar gamoitanos
-    // this.addCustomerForm.reset();
-    // this.isSubmited = false;
-    // vwmindav formas
-    console.log('dasasdasd');
   }
 
   onFilterTable() {

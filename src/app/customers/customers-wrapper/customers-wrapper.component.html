@@ -89,6 +89,14 @@
             "
             >birthday required</mat-error
           >
+          <mat-error
+            *ngIf="
+              isSubmited &&
+              addCustomerForm.get('birthday')?.hasError('userIsNotAdult')
+            "
+            >need to be more than 18
+            <!-- aqvarqmevt i msaxels rac calek gatanil validator punqcias da varqvit mashin roca bolso vareturnebt da vareturnebt obieqts {isPasswordInValid:true} s-->
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="d-flex align-items-center justify-content-around">
