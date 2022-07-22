@@ -4,4 +4,5 @@ export interface PeriodicElement {
   email: string;
   sex: string;
   birthday: number | any;
+  password: number | string | any;
 }

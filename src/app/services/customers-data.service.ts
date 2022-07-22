@@ -23,6 +23,8 @@ export class CustomersDataService {
     'email',
     'sex',
     'birthday',
+    'password',
+    'delete',
   ];
   deletedCustomersArray: PeriodicElement[] = [];
 }

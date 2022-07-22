@@ -7,6 +7,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   imports: [
     MatTableModule,
@@ -17,6 +19,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatFormFieldModule,
+    MatIconModule,
   ],
   exports: [
     MatTableModule,
@@ -27,6 +31,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatFormFieldModule,
+    MatIconModule,
   ],
   providers: [MatDatepickerModule],
 })

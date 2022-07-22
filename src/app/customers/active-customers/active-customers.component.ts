@@ -20,6 +20,5 @@ export class ActiveCustomersComponent {
     this.CustomersDataService.customersData = [
       ...this.CustomersDataService.customersData,
     ];
-    console.log(this.CustomersDataService.deletedCustomersArray);
   }
 }
