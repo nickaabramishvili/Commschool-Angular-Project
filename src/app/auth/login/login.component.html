@@ -1,7 +1,7 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="fill">
     <mat-label>First Name</mat-label>
-    <input matInput formControlName="firstName" [(ngModel)]="firstName" />
+    <input matInput formControlName="firstName" />
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Enter your password</mat-label>
@@ -9,7 +9,6 @@
       matInput
       [type]="hide ? 'password' : 'text'"
       formControlName="password"
-      [(ngModel)]="password"
     />
     <button
       mat-icon-button

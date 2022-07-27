@@ -22,7 +22,6 @@ import { routes } from './customers.routing.module';
     ReactiveFormsModule,
     DirectivesModule,
     PipesModule,
-
     RouterModule.forChild(routes),
   ],
   exports: [ActiveCustomersComponent, CustomersWrapperComponent],
