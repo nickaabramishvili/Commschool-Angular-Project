@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomersModule } from './customers/customers.module';
 import { CommentsFromApiModule } from './comments-from-api/comments-from-api.module';
 import { AuthInterceptor } from './core/auth.interceptor';
