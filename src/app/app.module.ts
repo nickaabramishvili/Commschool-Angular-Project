@@ -8,7 +8,7 @@ import { CustomersModule } from './customers/customers.module';
 import { CommentsFromApiModule } from './comments-from-api/comments-from-api.module';
 import { AuthInterceptor } from './core/auth.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LoginModule } from './login/login.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +19,7 @@ import { LoginModule } from './login/login.module';
     CustomersModule,
     CommentsFromApiModule,
     HttpClientModule,
-    LoginModule,
+    AuthModule,
   ],
   providers: [
     {
