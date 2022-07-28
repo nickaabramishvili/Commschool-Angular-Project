@@ -7,7 +7,7 @@ import {
   animate,
 } from '@angular/animations';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CustomersDataService } from '../../services/customers-data.service';
+import { CustomersDataService } from '../../shared/services/customers-data.service';
 import { customerPasswordStrength } from '../validators/customer-password-validator';
 import { checkCustomerAge } from '../validators/customer-age-validator';
 @Component({

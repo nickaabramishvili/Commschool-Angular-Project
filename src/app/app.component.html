@@ -24,24 +24,37 @@
               <li
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
+                *ngIf="!this.registeredUserCheck.userIsLogged"
               >
-                <a routerLink="login" class="nav-link">Login</a>
+                <a routerLink="login" class="nav-link"> Login</a>
               </li>
-              <li routerLinkActive="active">
+              <li
+                routerLinkActive="active"
+                *ngIf="this.registeredUserCheck.userIsLogged"
+              >
                 <a routerLink="customers" class="nav-link">Customers</a>
               </li>
 
-              <li routerLinkActive="active">
+              <li
+                routerLinkActive="active"
+                *ngIf="this.registeredUserCheck.userIsLogged"
+              >
                 <a routerLink="customers/active-customers" class="nav-link"
                   >Active-Customers</a
                 >
               </li>
-              <li routerLinkActive="active">
+              <li
+                routerLinkActive="active"
+                *ngIf="this.registeredUserCheck.userIsLogged"
+              >
                 <a routerLink="customers/deleted-customers" class="nav-link"
                   >Deleted-Customers</a
                 >
               </li>
-              <li routerLinkActive="active">
+              <li
+                routerLinkActive="active"
+                *ngIf="this.registeredUserCheck.userIsLogged"
+              >
                 <a routerLink="posts" class="nav-link">Posts</a>
               </li>
             </ul>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RegisteredUserCheckService } from './shared/services/registered-user-check.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Commschool-Angular-Project';
+
+  constructor(public registeredUserCheck: RegisteredUserCheckService) {}
 }

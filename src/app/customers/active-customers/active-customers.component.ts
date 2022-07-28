@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CustomersDataService } from '../../services/customers-data.service';
+import { CustomersDataService } from '../../shared/services/customers-data.service';
 
 @Component({
   selector: 'app-active-customers',

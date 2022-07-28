@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PeriodicElement } from '../customers/models/customer.model';
+import { PeriodicElement } from '../../customers/models/customer.model';
 @Injectable({
   providedIn: 'root',
 })
