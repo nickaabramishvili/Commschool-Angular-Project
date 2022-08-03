@@ -6,8 +6,14 @@ import { AppComponent } from './app.component';
 import { CustomersModule } from './customers/customers.module';
 import { CommentsFromApiModule } from './comments-from-api/comments-from-api.module';
 import { AuthInterceptor } from './core/auth.interceptor';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +25,13 @@ import { AuthModule } from './auth/auth.module';
     CommentsFromApiModule,
     HttpClientModule,
     AuthModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [
     {
@@ -30,3 +43,6 @@ import { AuthModule } from './auth/auth.module';
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}
