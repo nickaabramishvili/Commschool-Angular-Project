@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { PeriodicElement } from '../../customers/models/customer.model';
+import { Customer } from '../models/customer.model';
 @Injectable({
   providedIn: 'root',
 })
 export class CustomersDataService {
   constructor() {}
-  customersData: PeriodicElement[] = [
+  customersData: Customer[] = [
     // { id: 1, firstName: 'eli', lastName: 'metreveli', workingYears: 1 },
     // { id: 2, firstName: 'gela', lastName: 'urushadze', workingYears: 2 },
     // { id: 3, firstName: 'bela', lastName: 'zoidze', workingYears: 3 },
@@ -26,5 +26,5 @@ export class CustomersDataService {
     'password',
     'delete',
   ];
-  deletedCustomersArray: PeriodicElement[] = [];
+  deletedCustomersArray: Customer[] = [];
 }
