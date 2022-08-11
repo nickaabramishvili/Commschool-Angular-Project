@@ -13,11 +13,22 @@ export const initialState: State = {
 
 export const CustomerReducer = createReducer(
   initialState,
-  on(CustomersActions.addCustomers, (state: State, { customer }) => ({
-    ...state,
-    customers: [...state.customers, customer],
-  }))
+  on(CustomersActions.addCustomers, (state: State, { customer }) => {
+    console.log('fired', customer);
+    return {
+      ...state,
+      customers: [...state.customers, customer],
+    };
+  }),
+
+  on(CustomersActions.testAction, (state: State, { customer }) => {
+    console.log('testf', customer);
+    return {
+      ...state,
+      customers: [...state.customers, customer],
+    };
+  })
 );
-export function reducer(state: State | undefined, action: Action): any {
+export function reducer(state = initialState, action: Action): any {
   return CustomerReducer(state, action);
 }

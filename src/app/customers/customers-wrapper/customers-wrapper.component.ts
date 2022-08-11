@@ -10,6 +10,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomersDataService } from '../../shared/services/customers-data.service';
 import { customerPasswordStrength } from '../validators/customer-password-validator';
 import { checkCustomerAge } from '../validators/customer-age-validator';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/store/reducer/customer.reducer';
+import { addCustomers } from 'src/app/store/action/customer.actions';
+import { selectCustomers } from 'src/app/store/selector/customer.selectors';
+import { Subject, tap, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-customers-wrapper',
   templateUrl: './customers-wrapper.component.html',
@@ -45,10 +50,11 @@ export class CustomersWrapperComponent implements OnInit {
   public ColoredText = '';
   isSubmited = false;
   hide = true;
-
+  $destoryed = new Subject<void>();
   constructor(
     @Inject('VERSION-NUMBER') public versionNumber: string,
-    public CustomersDataService: CustomersDataService
+    public CustomersDataService: CustomersDataService,
+    private store: Store<State>
   ) {
     this.addCustomerForm = new FormGroup({
       firstName: new FormControl('', [Validators.required]),
@@ -110,6 +116,17 @@ export class CustomersWrapperComponent implements OnInit {
       // });
       // vwmindav formas
     }
+
+    // this.store.dispatch(
+    //   addCustomers({
+    //     firstName: this.addCustomerForm.value.firstName,
+    //     lastName: this.addCustomerForm.value.lastName,
+    //     email: this.addCustomerForm.value.email,
+    //     sex: this.addCustomerForm.value.sex,
+    //     birthday: this.addCustomerForm.value.birthday,
+    //     password: this.addCustomerForm.value.password,
+    //   })
+    // );
   }
 
   onFilterTable() {
@@ -156,5 +173,15 @@ export class CustomersWrapperComponent implements OnInit {
       }
       console.log(data);
     });
+    this.store
+      .select(selectCustomers)
+      .pipe(takeUntil(this.$destoryed))
+      .subscribe((res) => {
+        console.log(res);
+      });
+  }
+  ngOnDestroy(): void {
+    this.$destoryed.next();
+    this.$destoryed.complete();
   }
 }
